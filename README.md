@@ -1,4 +1,4 @@
-# OntarioCovidUpdate
+# Ontario Covid Update
 Sends an email and desktop notification(Mac OS only) when the Ontario,Canada Covid Numbers are updated.
 
 # Usage
