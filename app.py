@@ -1,3 +1,9 @@
+import sqlite3
+connection = sqlite3.connect("mailingList.db")
+cursor = connection.cursor()
+command1 = """CREATE TABLE IF NOT EXISTS
+emails(email_id INTEGER PRIMARY KEY, email TEXT)"""
+cursor.execute(command1) 
 from selenium import webdriver 
 from selenium.webdriver.chrome.options import Options
 from time import sleep
@@ -50,6 +56,7 @@ while True:
         print("updated!")
         dateUpdated = dateUpdated2
         totalCases1 = totalCases2
+        # Attempting to figure out a way to send to a list of people using a sqlite database.
         message = Mail(from_email=os.environ.get('TEST_SEND_EMAIL'),to_emails=os.environ.get('TEST_REC_EMAIL'), subject='Sending with Twilio SendGrid is Fun',html_content='<strong>The number of new cases in Ontario is {newCases}</strong>')
         try:
             sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
