@@ -52,7 +52,7 @@ while True:
         print("not update")
     else:
         newCases = totalCases2 - totalCases1
-        if (sys.platform == "osx"):
+        if (sys.platform == "darwin"):
             updateNotification = f"osascript -e 'display notification \"There are {newCases} new cases\" with title \"Covid-19 Numbers Have been Updated\"'"
             os.system(updateNotification)
         print("updated!")
