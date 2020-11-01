@@ -1,3 +1,4 @@
+import sys
 import sqlite3
 connection = sqlite3.connect("mailingList.db")
 cursor = connection.cursor()
@@ -51,8 +52,9 @@ while True:
         print("not update")
     else:
         newCases = totalCases2 - totalCases1
-        updateNotification = f"osascript -e 'display notification \"There are {newCases} new cases\" with title \"Covid-19 Numbers Have been Updated\"'"
-        os.system(updateNotification)
+        if (sys.platform == "osx"):
+            updateNotification = f"osascript -e 'display notification \"There are {newCases} new cases\" with title \"Covid-19 Numbers Have been Updated\"'"
+            os.system(updateNotification)
         print("updated!")
         dateUpdated = dateUpdated2
         totalCases1 = totalCases2
