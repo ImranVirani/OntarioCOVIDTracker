@@ -4,6 +4,7 @@ connection = sqlite3.connect("mailingList.db")
 cursor = connection.cursor()
 command1 = """CREATE TABLE IF NOT EXISTS
 emails(email_id INTEGER PRIMARY KEY, email TEXT)"""
+
 cursor.execute(command1) 
 from selenium import webdriver 
 from selenium.webdriver.chrome.options import Options
@@ -22,15 +23,11 @@ from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
 driver = webdriver.Chrome(options=chrome_options)
-
-driver.get("https://covid-19.ontario.ca/data")
-
+driver.get("https://covid-19.ontario.ca/")
 while True:
-    # Finds time and date updated
-    dateUpdated = driver.find_element_by_xpath("/html/body/div/div/main/div/div/div/div/div/div[4]/article/div/div/div/div[2]/div/div[1]/p")
-    dateUpdated = dateUpdated.text
     # Checks to see number of cases before update
     totalCases1 = driver.find_element_by_class_name("ontario-infographic-number")
+    
     totalCases1 = totalCases1.text
     # Removes comma in the number and then coverts to an integer
     totalCases1= totalCases1.split(",")
@@ -46,20 +43,20 @@ while True:
     totalCases2 = totalCases2[0]+ totalCases2[1]
     totalCases2 = int(totalCases2)
     # Finds date and time to compare against
-    dateUpdated2 = driver.find_element_by_xpath("/html/body/div/div/main/div/div/div/div/div/div[4]/article/div/div/div/div[2]/div/div[1]/p")
-    dateUpdated2 = dateUpdated2.text
-    if (dateUpdated == dateUpdated2):
+    if (totalCases1 == totalCases2):
         print("not update")
     else:
         newCases = totalCases2 - totalCases1
-        if (sys.platform == "darwin"):
+        # Uncomment the 3 lines commented out below to enable desktop notifications for mac.
+        '''if (sys.platform == "darwin"):
             updateNotification = f"osascript -e 'display notification \"There are {newCases} new cases\" with title \"Covid-19 Numbers Have been Updated\"'"
             os.system(updateNotification)
+            '''
         print("updated!")
-        dateUpdated = dateUpdated2
         totalCases1 = totalCases2
+        html_messages = '<strong>The number of new cases in Ontario is'+ ' ' + str(newCases) + ' ' + '</strong>'
         # Attempting to figure out a way to send to a list of people using a sqlite database.
-        message = Mail(from_email=os.environ.get('TEST_SEND_EMAIL'),to_emails=os.environ.get('TEST_REC_EMAIL'), subject='Sending with Twilio SendGrid is Fun',html_content='<strong>The number of new cases in Ontario is {newCases}</strong>')
+        message = Mail(from_email=os.environ.get('TEST_SEND_EMAIL'),to_emails=os.environ.get('TEST_REC_EMAIL'), subject='Covid-19 Numbers have been updated',html_content=html_messages)
         try:
             sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
             response = sg.send(message)
