@@ -10,3 +10,5 @@ pip3 install -r requirements.txt
 You will also need to setup the Sendgrid API, you will need the quickstart.py and credentials.json in the same folder as the project.
 
 You will also need to set the environment variables ```TEST_EMAIL_SEND``` to the email that is setup with Sendgrid and ```TEST_EMAIL_REC``` to the email address you are sending to.
+
+If there are any inquiries regarding the project, please create an issue and I would be happy to help.
