@@ -1,7 +1,7 @@
 # Ontario Covid Update
 Sends an email and desktop notification(Mac OS only) when the Ontario, Canada Covid Numbers are updated.
 
-# Usage
+# Setup
 To run this application make sure to have the Chromium Web Driver installed in the default location, and install the dependencies of the project using the requirements.txt:
 
 ```
