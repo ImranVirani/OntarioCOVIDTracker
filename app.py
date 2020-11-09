@@ -46,10 +46,10 @@ while True:
             os.system(updateNotification)
             '''
         print("updated!")
+        # Updates current number of cases to be latest number of cases to be compared against the next days numbers
         totalCases1 = totalCases2
         html_messages = '<strong>The number of new cases in Ontario is'+ ' ' + str(newCases) + ' ' + '</strong>'
-        # Attempting to figure out a way to send to a list of people using a sqlite database.
-        # If you would like to send to multiple people pass in an array to_emails variable
+        # If you would like to send to multiple people, pass in an array to_emails variable
         message = Mail(from_email=os.environ.get('TEST_SEND_EMAIL'),to_emails=os.environ.get('TEST_REC_EMAIL'), subject='Covid-19 Numbers have been updated',html_content=html_messages)
         try:
             sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
