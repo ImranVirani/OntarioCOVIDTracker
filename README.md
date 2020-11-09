@@ -17,6 +17,6 @@ echo "export TEST_EMAIL_SEND='INSERT_SEND_EMAIL_HERE'" >> ~/.bashrc
 echo "export TEST_EMAIL_REC='INSERT_RECEIVING_EMAIL_HERE'" >> ~/.bashrc
 echo "export SENDGRID_API_KEY='INSERT_API_KEY_HERE'" >> ~/.bashrc
 ```
-Replace ```bash``` with ```zsh``` to use with ```zsh```
+Replace ```~/.bashrc``` with ```~/.zshrc``` to use with ```zsh```
 
 If there are any inquiries regarding the project, please create an issue and I would be happy to help.
