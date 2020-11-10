@@ -1,5 +1,5 @@
-# Ontario Covid Update
-Sends an email and desktop notification(Mac OS only) when the Ontario, Canada Covid Numbers are updated.
+# About
+Sends an email and desktop notification(Currently Mac OS only) when the Ontario, Canada Covid-19 Numbers are updated.
 
 # Setup
 To run this application make sure to have the Chromium Web Driver installed in the default location, and install the dependencies of the project using the requirements.txt:
@@ -19,4 +19,5 @@ echo "export SENDGRID_API_KEY='INSERT_API_KEY_HERE'" >> ~/.bashrc
 ```
 Replace ```~/.bashrc``` with ```~/.zshrc``` to use with ```zsh```
 
+# Support
 If there are any inquiries regarding the project, please create an issue and I would be happy to help.
