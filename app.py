@@ -16,6 +16,8 @@ from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
 driver = webdriver.Chrome(options=chrome_options)
+# If the path to your chromedriver is in a different place uncomment (remove the '#') the line below
+# driver = webdriver.Chrome(executable_path=r"~/path/to/chromedriver")
 driver.get("https://covid-19.ontario.ca/")
 while True:
     # Checks to see number of cases before update
