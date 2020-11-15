@@ -2,7 +2,7 @@
 A Python 3 application that sends an email and desktop notification(Currently Mac OS only) when the Ontario, Canada Covid-19 numbers are updated.
 
 # Setup
-To run this application make sure to have Google Chrome and the Chromium Web Driver installed in the default location, and install the dependencies of the project using the requirements.txt:
+To run this application make sure to have Google Chrome and the Chromium Web Driver(which can be found [here](https://chromedriver.chromium.org/downloads) installed in the default location, and install the dependencies of the project using the requirements.txt:
 
 ```
 pip3 install -r requirements.txt
