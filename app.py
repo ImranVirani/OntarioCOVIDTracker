@@ -25,15 +25,15 @@ while True:
     soup = BeautifulSoup(page.text, 'html.parser')
     # Checks to see number of cases before update
     totalCases2 = soup.find(class_='ontario-infographic-number')
-    totalCases2 = totalCases1.contents
+    totalCases2 = totalCases2.contents
     totalCases2= totalCases2[0]
     totalCases2 = str(totalCases2)
     totalCases2 = totalCases2.strip()
     
     # Removes comma in the number and then coverts to an integer
     totalCases2 = totalCases2.split(",")
-    totalCases2 = totalCases1[0]+ totalCases1[1]
-    totalCases2 = int(totalCases1)
+    totalCases2 = totalCases2[0]+ totalCases2[1]
+    totalCases2 = int(totalCases2)
     print(totalCases2)
  
     if (totalCases1 == totalCases2):
