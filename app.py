@@ -1,7 +1,8 @@
 import os
+from time import sleep
+import time 
 import requests
 from bs4 import BeautifulSoup
-from time import sleep
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
@@ -14,17 +15,16 @@ while True:
     totalCases1 = totalCases1[0]
     totalCases1 = str(totalCases1)
     totalCases1 = totalCases1.strip()
-    
     # Removes comma in the number and then coverts to an integer
     totalCases1= totalCases1.split(",")
     totalCases1 = totalCases1[0]+ totalCases1[1]
     totalCases1 = int(totalCases1)
     print(totalCases1)
-
-    page = requests.get('https://covid-19.ontario.ca/')
-    soup = BeautifulSoup(page.text, 'html.parser')
+    sleep(30)
+    new_page = requests.get('https://covid-19.ontario.ca/')
+    soup_2 = BeautifulSoup(new_page.text, 'html.parser')
     # Checks to see number of cases before update
-    totalCases2 = soup.find(class_='ontario-infographic-number')
+    totalCases2 = soup_2.find(class_='ontario-infographic-number')
     totalCases2 = totalCases2.contents
     totalCases2= totalCases2[0]
     totalCases2 = str(totalCases2)
@@ -35,9 +35,8 @@ while True:
     totalCases2 = totalCases2[0]+ totalCases2[1]
     totalCases2 = int(totalCases2)
     print(totalCases2)
- 
     if (totalCases1 == totalCases2):
-        print("not update")
+        print(str(time.localtime()) + " - not update")
     else:
         newCases = totalCases2 - totalCases1
         print("updated!")
@@ -57,4 +56,5 @@ while True:
             print(response.headers)
         except Exception as e:
             print(e)
-    sleep(300)
+    sleep(100)
+
