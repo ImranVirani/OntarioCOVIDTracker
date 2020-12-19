@@ -1,6 +1,6 @@
 # About
 
-****Note: Currently this app is not functioning as the governement has changed layout of page
+****Note: Currently this app is not functioning as there is a critical bug worked out
 
 A Python 3 application that sends an email and desktop notification(Currently Mac OS only) when the Ontario, Canada Covid-19 numbers are updated.
 
