@@ -26,6 +26,3 @@ echo "export TEST_EMAIL_REC='INSERT_RECEIVING_EMAIL_HERE'" >> ~/.bashrc
 echo "export SENDGRID_API_KEY='INSERT_API_KEY_HERE'" >> ~/.bashrc
 ```
 Replace ```~/.bashrc``` with ```~/.zshrc``` to use with ```zsh```
-
-# Support
-If there are any inquiries regarding the project(eg. setting up/running), please create an issue and I would be happy to help.
